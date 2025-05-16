@@ -2,7 +2,7 @@ import { baseUrl } from "./baseUrl/url.js";
 import { headerSaveToken, headerEncrypt } from './headers/header.js';
 import { urlRef, testingToken } from '../utils/constant.js';
 import { sendPosts } from './../utils/http-native-helpers.js';
-import { bodyRegistEncrypt } from './../utils/body-helpers.js';
+import { bodyRegistEncrypt, bodyToken } from './../utils/body-helpers.js';
 
 export function registEncrypt(){
     const environment = process.env.env
