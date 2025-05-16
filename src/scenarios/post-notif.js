@@ -17,6 +17,6 @@ export function postNotif(){
     const body = notifBody()
 
     const res = sendPost(`${url}/fdn-client-notification/v3/notification`, body, forHeader)
-    console.log('Get detail postman response: ', res.json())
+    console.log('Get detail response: ', res.json())
     return res
 }

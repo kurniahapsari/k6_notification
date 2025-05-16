@@ -18,3 +18,14 @@ export const headerSaveIdNotif = {
     'Accept':'application/json',
     'Content-Type':'application/json'
 }
+
+export const headerSaveToken = {
+    'Content-Type':'application/json'
+}
+
+export const headerEncrypt = {
+    'key': 'client03-TSbs94s3q5H9PP2yNPBr',
+    'version': '1.5',
+    'device': '3',
+    'Content-Type': 'application/json'
+}
