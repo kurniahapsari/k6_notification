@@ -22,8 +22,9 @@ export function bodyRegistEncrypt(){
     }
 }
 
-export function bodyToken(token){
+export function bodyToken(token, phoneNumber){
     return {
-        "token": `${token}`
+        "token": `${token}`,
+        "phone_number": `${phoneNumber}`
     }
 }

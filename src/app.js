@@ -25,16 +25,17 @@ db.connect((err) => {
 
 //endpoint buat simpan token ke db
 app.post('/save-token', (req, res) => {
-    const { token } = req.body
-    if (!token){
-        return res.status(400).json({ error: 'Token is required'});
-        }
+    const { token, phone_number } = req.body
+    
+    if (!token || !phone_number) {
+        return res.status(400).json({ error: 'Token and phone number are required' });
+    }
 
-    db.query('INSERT INTO tokens (token) VALUES (?)', [token], (err) => {
+    db.query('INSERT INTO tokens (token, phone_number) VALUES (?, ?)', [token, phone_number], (err) => {
         if (err) {
             return res.status(500).json({ error: 'Failed to save token' })
         }
-        res.status(200).json({ message: 'Token saved successfully' })
+        res.status(200).json({ message: 'Token and phone number saved successfully!' })
     })
 })
 
