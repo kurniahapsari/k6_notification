@@ -24,7 +24,7 @@ export function fileContent(){
     };
 
     const phoneNumber = generatePhoneNumber();
-    const uniqueId = phoneNumber.substring(9);
+    const uniqueId = phoneNumber.substring(8);
 
     return {
         channel: 'sms',
