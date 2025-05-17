@@ -8,6 +8,15 @@ export function headerNotif(token) {
     }
 }
 
+export function headerRefresh() {
+    return {
+        'key': 'client01-pb3TVYisCGurD08ks3YW',
+        'version': '1.5',
+        'device': '1',
+        'Content-Type': 'application/json'
+    }
+}
+
 export function headerGetToken() {
     return {
         'Accept':'application/json'
