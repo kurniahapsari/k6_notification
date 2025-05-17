@@ -1,9 +1,3 @@
-export function bodyPostman(){
-    return {
-        test: "value"
-    }
-}
-
 export function notifBody() {
     return {
             placeholders: [
@@ -18,3 +12,9 @@ export function notifBody() {
             image: "https://image.femaledaily.com/dyn/210/images/prod-pics/product_1545194985_Maybelline_800x800.jpg"
         }
     }
+
+export function bodyToken(token){
+    return {
+        "token": `${token}`
+    }
+}

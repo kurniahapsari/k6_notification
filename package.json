@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-dev": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak && k6 run --env env=dev src/main.js\"",
-    "test-canary": "node src/app.js && k6 run --env env=canary src/main.js",
-    "test-prod": "node src/app.js && k6 run --env env=prod src/main.js"
+    "test-dev": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak\" \"k6 run --env env=dev src/main.js\"",
+    "test-canary": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak\" \"k6 run --env env=canary src/main.js\"",
+    "test-prod": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak\" \"k6 run --env env=prod src/main.js\""
   },
   "keywords": [],
   "author": "",
