@@ -1,7 +1,7 @@
 export const url = {
     dev : 'https://api-dev-new.femaledaily.net',
-    canary : 'https://api-canary.femaledaily.com/app',
-    prod : 'https://femaledaily.com',
+    canary : 'https://api-canary.femaledaily.com',
+    prod : 'https://api-new.femaledaily.com',
     local: 'http://localhost:3002'
 }
 

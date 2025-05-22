@@ -15,16 +15,17 @@ export function notifBody() {
     }
 }
 
-export function bodyRegistEncrypt(){
-    const encrypted_login = encryptRSA();
+export function bodyRegistEncrypt(env){
+    const encrypted_login = encryptRSA(env);
     return {
         "data": `${encrypted_login}`
     }
 }
 
-export function bodyToken(token, phoneNumber){
+export function bodyToken(token, phoneNumber, environment){
     return {
         "token": `${token}`,
-        "phone_number": `${phoneNumber}`
+        "phone_number": `${phoneNumber}`,
+        "environment": `${environment}`
     }
 }

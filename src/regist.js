@@ -5,16 +5,17 @@ import { sendPostx } from './../utils/http-axios-helpers.js';
 import { bodyRegistEncrypt, bodyToken } from './../utils/body-helpers.js';
 
 async function registEncrypt(userIndex){
-    const environment = process.env.env
-    const url = baseUrl(environment)
+    const envArg = process.argv.find(arg => arg.startsWith('--env='))
+    const env = envArg ? envArg.split('=')[1] : 'dev1'
 
-    const body = bodyRegistEncrypt()
+    const url = baseUrl(env)
+    const body = bodyRegistEncrypt(env)
 
     try {
         const res = await sendPostx(`${url}/fdn-sso-v3/v1/authorization/register/complete-account?url_referrer=${urlRef}&testing_token=${testingToken}`, body, headerEncrypt);
         console.log(`User ${userIndex} registered successfully! Token:`, JSON.stringify(res.data.token));
         
-        const userData = bodyToken(res.data.token, res.data.phone_number);
+        const userData = bodyToken(res.data.token, res.data.phone_number, env);
 
         // Save token and phone_number to database
         const localUrl = baseUrl('local');
@@ -34,4 +35,4 @@ async function runRegistrations(countUser) {
 }
 
 // Define how many user on param
-runRegistrations(5);
+runRegistrations(1);

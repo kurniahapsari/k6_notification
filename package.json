@@ -6,9 +6,11 @@
   "type": "module",
   "scripts": {
     "test-dev": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak\" \"k6 run --env env=dev src/main.js\"",
-    "test-dev-regist": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak\" \"node src/regist.js\"",
+    "test-dev-regist": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak\" \"node src/regist.js --env=dev\"",
     "test-canary": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak\" \"k6 run --env env=canary src/main.js\"",
-    "test-prod": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak\" \"k6 run --env env=prod src/main.js\""
+    "test-canary-regist": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak\" \"node src/regist.js --env=canary\"",
+    "test-prod": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak\" \"k6 run --env env=prod src/main.js\"",
+    "test-prod-regist": "concurrently \"node src/app.js\" \"timeout /t 3 /nobreak\" \"node src/regist.js --env=prod\""
   },
   "keywords": [],
   "author": "",
