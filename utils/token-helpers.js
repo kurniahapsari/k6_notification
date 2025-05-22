@@ -7,14 +7,14 @@ import { headerRefresh } from "../src/headers/header.js";
 
 export function getToken(){
     const localUrl = baseUrl('local')
-        
+    const environment = __ENV.env || 'dev'
+    
     // get token
-    const getTokenResponse = sendGet(`${localUrl}/get-token`);
+    const getTokenResponse = sendGet(`${localUrl}/get-token?environment=${environment}`);
     const tokenData = getTokenResponse.json()
     const token = tokenData.token
     
     // refresh token
-    const environment = __ENV.env || 'dev'
     const url = baseUrl(environment)
     const bodyRefresh = bodyToken(token)
     const ref = sendPost(`${url}/fdn-sso-v3/v1/authorization/refresh-token`, bodyRefresh, headerRefresh())
