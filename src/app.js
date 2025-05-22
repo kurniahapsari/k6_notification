@@ -41,14 +41,21 @@ app.post('/save-token', (req, res) => {
 
 //endpoint buat get token terbaru
 app.get('/get-token', (req, res) => {
-    db.query('SELECT token FROM tokens ORDER BY RAND() LIMIT 1', (err, results) => {
-      if (err || results.length === 0) {
-        return res.status(500).json({ error: 'Failed to retrieve token' });
-      }
-      res.status(200).json({ token: results[0].token });
-    });
-  });
+  const environment = req.query.environment;
 
+  if (!environment) {
+    return res.status(400).json({ error: 'Missing environment parameter' });
+  }
+
+  const query = 'SELECT token FROM tokens WHERE environment = ? ORDER BY RAND() LIMIT 1';
+  db.query(query, [environment], (err, results) => {
+    if (err || results.length === 0) {
+      return res.status(500).json({ error: 'Failed to retrieve token' });
+    }
+
+    res.status(200).json({ token: results[0].token });
+  });
+});
   
   // Menjalankan server
   const PORT = 3002
